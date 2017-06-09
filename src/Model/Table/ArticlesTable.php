@@ -25,7 +25,7 @@ class ArticlesTable extends Table
             $sluggedTitle = Text::slug($entity->title);
             // trim slug to maximum length defined in schema
             $entity->slug = substr($sluggedTitle, 0, 191);
-    }
+        }
         // This is temporary, and will be removed later
         // when we build authentication out.
         if (!$entity->user_id) {
@@ -93,6 +93,11 @@ class ArticlesTable extends Table
                 ->where(['Tags.title IN' => $options['tags']]);
         }
         return $query->group(['Articles.id']);
+    }
+
+    public function isOwnedBy($articleId, $userId)
+    {
+        return $this->exists(['id' => $articleId, 'user_id' => $userId]);
     }
 
 }
