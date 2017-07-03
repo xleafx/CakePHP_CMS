@@ -66,10 +66,10 @@ class ArticlesTable extends Table
     {
         $validator
             ->notEmpty('title')
-            ->minLength('title', 10)
+            ->minLength('title', 1)
             ->maxLength('title', 255)
             ->notEmpty('body')
-            ->minLength('body', 10);
+            ->minLength('body', 1);
         return $validator;
     }
 

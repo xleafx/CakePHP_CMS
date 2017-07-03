@@ -2,8 +2,9 @@
 <p><?= $this->Html->link('Add Article', ['action' => 'add']) ?></p>
 <table>
     <tr>
-        <th>Title</th>
-        <th>Created</th>
+        <th><?= $this->Paginator->sort('title') ?></th>
+        <th><?= $this->Paginator->sort('user_id', 'Author') ?></th>
+        <th><?= $this->Paginator->sort('created', 'Date') ?></th>
         <th>Action</th>
     </tr>
     <!-- Here is where we iterate through our $articles query object, printing out article info -->
@@ -12,6 +13,9 @@
         <td>
             <?= $this->Html->link($article->title, ['action' => 'view', $article->slug]) ?>
         </td>
+        <th>
+            <?= $this->Html->link($article->user_id, ['action' => 'view', $article->slug]) ?>
+        </th>
         <td>
             <?= $article->created->format(DATE_RFC850) ?>
         </td>

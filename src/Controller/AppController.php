@@ -45,17 +45,33 @@ class AppController extends Controller
         $this->loadComponent('Flash');
         $this->loadComponent('Paginator');
         $this->loadComponent('Auth', [
+//            'authorize' => ['Controller'],
+//                'loginRedirect' => [
+//                    'controller' => 'Users',
+//                    'action' => 'login'
+//                ],
+//                'logoutRedirect' => [
+//                    'Form' => [
+//                        'fields' => [
+//                            'username' => 'username',
+//                            'password' => 'password'
+//                        ]
+//                    ]
+//                ]
+
             'authorize' => ['Controller'],
             'loginRedirect' => [
                 'controller' => 'Articles',
                 'action' => 'index'
             ],
             'logoutRedirect' => [
-                'controller' => 'Pages',
-                'action' => 'display',
-                'home'
-            ]
+                'controller' => 'users',
+                'action' => 'logout',
+//                'home'
+            ],
+            'unauthorizedRedirect' => $this->referer()
         ]);
+        $this->Auth->allow(['display']);
 
         /*
          * Enable the following components for recommended CakePHP security settings.
@@ -82,6 +98,13 @@ class AppController extends Controller
             in_array($this->response->type(), ['application/json', 'application/xml'])
         ) {
             $this->set('_serialize', true);
+        }
+
+        // Login Check
+//        $this->request->session('Auth.User');
+        $user_stat = $this->Auth->user();
+        if ($user_stat != NULL) {
+            $this->set('user_stat', $user_stat);
         }
     }
 

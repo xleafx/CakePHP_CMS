@@ -1,4 +1,4 @@
-<div class="users form">
+<div class="users form large-4 medium-4 large-offset-4 medium-offset-4 columns">
     <?= $this->Flash->render() ?>
     <?= $this->Form->create() ?>
     <fieldset>

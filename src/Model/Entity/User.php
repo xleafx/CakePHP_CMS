@@ -9,7 +9,9 @@ use Cake\Auth\DefaultPasswordHasher;
  *
  * @property int $id
  * @property string $email
+ * @property string $username
  * @property string $password
+ * @property string $role
  * @property \Cake\I18n\FrozenTime $created
  * @property \Cake\I18n\FrozenTime $modified
  *

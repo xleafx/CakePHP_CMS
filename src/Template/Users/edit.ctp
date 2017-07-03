@@ -23,7 +23,11 @@
         <legend><?= __('Edit User') ?></legend>
         <?php
             echo $this->Form->control('email');
+            echo $this->Form->control('username');
             echo $this->Form->control('password');
+            echo $this->Form->control('role');
+            echo $this->Form->control('birth', ['type' => 'date', 'required' => true]);
+            echo $this->Form->control('photo', ['type' => 'file']);
         ?>
     </fieldset>
     <?= $this->Form->button(__('Submit')) ?>

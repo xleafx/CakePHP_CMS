@@ -22,6 +22,8 @@
             echo $this->Form->control('role', [
                     'options' => ['admin' => 'Admin', 'author' => 'Author']
             ]);
+            echo $this->Form->control('age', ['type' => 'date', 'required' => true]);
+            echo $this->Form->control('photo', ['type' => 'file']);
         ?>
     </fieldset>
     <?= $this->Form->button(__('Submit')) ?>
